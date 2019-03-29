@@ -1,0 +1,16 @@
+.\objects\function.o: ..\CODE\Function\Function.c
+.\objects\function.o: ..\CODE\Function\Function.h
+.\objects\function.o: ..\..\Libraries\drives\common\common.h
+.\objects\function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\function.o: ..\..\Libraries\drives\common\SEEKFREE_PRINTF.h
+.\objects\function.o: ..\USER\inc\LPC546XX_config.h
+.\objects\function.o: ..\..\Libraries\startup\DeviceSupport\LPC54606.h
+.\objects\function.o: ..\..\Libraries\startup\CoreSupport\core_cm4.h
+.\objects\function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\function.o: ..\..\Libraries\startup\CoreSupport\core_cmInstr.h
+.\objects\function.o: ..\..\Libraries\startup\CoreSupport\core_cmFunc.h
+.\objects\function.o: ..\..\Libraries\startup\CoreSupport\core_cm4_simd.h
+.\objects\function.o: ..\..\Libraries\startup\DeviceSupport\system_LPC54606.h
+.\objects\function.o: ..\..\Libraries\drives\common\misc.h
+.\objects\function.o: ..\..\Libraries\drives\common\assert.h

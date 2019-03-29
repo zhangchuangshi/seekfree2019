@@ -1,0 +1,16 @@
+.\objects\otsu.o: ..\CODE\OTSU\OTSU.c
+.\objects\otsu.o: ..\CODE\OTSU\OTSU.h
+.\objects\otsu.o: ..\..\Libraries\drives\common\common.h
+.\objects\otsu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\otsu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\otsu.o: ..\..\Libraries\drives\common\SEEKFREE_PRINTF.h
+.\objects\otsu.o: ..\USER\inc\LPC546XX_config.h
+.\objects\otsu.o: ..\..\Libraries\startup\DeviceSupport\LPC54606.h
+.\objects\otsu.o: ..\..\Libraries\startup\CoreSupport\core_cm4.h
+.\objects\otsu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\otsu.o: ..\..\Libraries\startup\CoreSupport\core_cmInstr.h
+.\objects\otsu.o: ..\..\Libraries\startup\CoreSupport\core_cmFunc.h
+.\objects\otsu.o: ..\..\Libraries\startup\CoreSupport\core_cm4_simd.h
+.\objects\otsu.o: ..\..\Libraries\startup\DeviceSupport\system_LPC54606.h
+.\objects\otsu.o: ..\..\Libraries\drives\common\misc.h
+.\objects\otsu.o: ..\..\Libraries\drives\common\assert.h
