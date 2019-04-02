@@ -20,7 +20,10 @@
 #include "headfile.h"
 
 
-
+int16 Left_front_goalspeed;
+int16 Right_front_goalspeed;
+int16 Left_rear_goalspeed;
+int16 Right_rear_goalspeed;
 
 //----------------------------------------------------
 //----------------------------------------------------
@@ -28,10 +31,10 @@ volatile int threshold=0;
 uint8 min_gray=120;	
 int flag2=0;
 int flag1=0;
-	int num;
+int num;
 
 #define a_PARAMETER          (0.09f)               
-#define b_PARAMETER          (0.09f) 	
+#define b_PARAMETER          (0.09f) 
 void McNamm_wheel_control(float Vx,float Vy,float Vz);
 
 void pwm_init();
@@ -43,36 +46,36 @@ int main(void)
     gpio_init(B2,GPO,1,PULLUP);
 		uart_init(USART_0,115200,UART0_TX_A25,UART0_RX_A24); 
 	  pwm_init();
-	   lcd_init();  
+	  lcd_init();  
 		gpio_set(B2,0);
-   mrt_pit_init_ms(MRT_CH0,5);
-	 Encoder_Init();
-			//camera_init(); 		
-	
-		  EnableInterrupts;
-	
-  uart_putchar(USART_0,0xA5);  
-	McNamm_wheel_control(0,0,0);
+    mrt_pit_init_ms(MRT_CH0,5);
+	  Encoder_Init();
+	  camera_init(); 		
+	  EnableInterrupts;
+	  uart_putchar(USART_0,0xA5);  
+	  McNamm_wheel_control(0,0,0);
     while(1)
     {
 
-			/*
+			
 		if(mt9v032_finish_flag)
 		{
+			//mrt_start(MRT_CH0);
 			threshold=MyOSTU(120,60,*image);
 				
 				if(threshold<min_gray)threshold=min_gray;
 			
 			lcd_displayimageOUST(image[0],MT9V032_W,MT9V032_H,threshold);
-				
-			/*
-			if(flag1==0)lcd_displayimage032(image[0],MT9V032_W,MT9V032_H);
+				//lcd_displayimage032(image[0],MT9V032_W,MT9V032_H);
+			
+			/*if(flag1==0)lcd_displayimage032(image[0],MT9V032_W,MT9V032_H);
 			else {
 				lcd_displayimageOUST(image[0],MT9V032_W,MT9V032_H,threshold);
-			}//
+			}//*/
 			Scan_Point();
 			mt9v032_finish_flag = 0;		
-		}//*/
+			gpio_toggle(B2);
+		}//
 
 
     }
@@ -102,28 +105,19 @@ void pwm_init()
 */
 void McNamm_wheel_control(float Vx,float Vy,float Vz)
 {
-		int16 Right_front_speed;
-		int16 Left_front_speed;
-		int16 Right_rear_speed;
-		int16 Left_rear_speed;
-		int16 Left_front_goalspeed;
-		int16 Right_front_goalspeed;
-		int16 Left_rear_goalspeed;
-		int16 Right_rear_goalspeed;
-	
 	  Left_rear_goalspeed    = -Vx+Vy-Vz*(a_PARAMETER+b_PARAMETER);
     Left_front_goalspeed   = +Vx+Vy-Vz*(a_PARAMETER+b_PARAMETER);
 	  Right_front_goalspeed  = -Vx+Vy+Vz*(a_PARAMETER+b_PARAMETER);
 		Right_rear_goalspeed   = +Vx+Vy+Vz*(a_PARAMETER+b_PARAMETER);
-    control(Left_front_goalspeed,Right_front_goalspeed,Left_rear_goalspeed,Right_rear_goalspeed);//
+    //control(Left_front_goalspeed,Right_front_goalspeed,Left_rear_goalspeed,Right_rear_goalspeed);//
 }
 /*
 功能:PWM占空比赋值
 入口参数:无
 返回值:无
-解释:
+解释:  此处有BUG   正确顺序是  左前--右前-左后--右后
 */
-void control(int Left_front_goalspeed,int Right_front_goalspeed,int Left_rear_goalspeed,int Right_rear_goalspeed)
+void control(int Right_rear_goalspeed,int Left_rear_goalspeed,int Right_front_goalspeed,int Left_front_goalspeed)//Left_rear_goalspeed
 {
 	if (Left_front_goalspeed>=0){//左前
 		sct_pwm_duty(SCT0_OUT2_A19,Left_front_goalspeed); 
@@ -150,12 +144,12 @@ void control(int Left_front_goalspeed,int Right_front_goalspeed,int Left_rear_go
 		sct_pwm_duty(SCT0_OUT7_A28,Left_rear_goalspeed);
 	}
 		if (Right_rear_goalspeed>=0){//右后
-		sct_pwm_duty(SCT0_OUT8_A29,Right_rear_goalspeed); 
-		sct_pwm_duty(SCT0_OUT9_A30,0);
-		}else{
-		Right_rear_goalspeed=~Right_rear_goalspeed+1;
 		sct_pwm_duty(SCT0_OUT8_A29,0); 
 		sct_pwm_duty(SCT0_OUT9_A30,Right_rear_goalspeed);
+		}else{
+		Right_rear_goalspeed=~Right_rear_goalspeed+1;
+		sct_pwm_duty(SCT0_OUT8_A29,Right_rear_goalspeed); 
+		sct_pwm_duty(SCT0_OUT9_A30,0);
 		}
 }
 //----------------------------------------------------------------

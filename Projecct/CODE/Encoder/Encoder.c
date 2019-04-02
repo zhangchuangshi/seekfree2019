@@ -10,8 +10,12 @@ void Encoder_Init()
 {
 	ctimer_count_init(TIMER0_COUNT1_A2);
 	ctimer_count_init(TIMER3_COUNT0_A4);
+	ctimer_count_init(TIMER4_COUNT0_A15);
+	ctimer_count_init(TIMER1_COUNT0_A16);
 	gpio_init(A3,GPI,0,PULLUP);
   gpio_init(A5,GPI,0,PULLUP);
+	gpio_init(B18,GPI,0,PULLUP);
+  gpio_init(B6,GPI,0,PULLUP);
 	Pid_Init();
 }
 
@@ -20,15 +24,22 @@ void Encoder_Init()
 void speed_get(void)
 { 
 			//ctimer_count_clean(TIMER0_COUNT0_A1);
-	if(gpio_get(A3))Left_front_speed=ctimer_count_read(TIMER0_COUNT1_A2); 
-		else  Left_front_speed=-ctimer_count_read(TIMER0_COUNT1_A2); 
+	if(gpio_get(A3))Left_rear_speed=ctimer_count_read(TIMER0_COUNT1_A2); 
+		else  Left_rear_speed=-ctimer_count_read(TIMER0_COUNT1_A2); 
 	 
-	if(gpio_get(A5))Right_front_speed=-ctimer_count_read(TIMER3_COUNT0_A4); 
-		else  Right_front_speed=ctimer_count_read(TIMER3_COUNT0_A4); 
+	if(gpio_get(A5))Right_rear_speed=-ctimer_count_read(TIMER3_COUNT0_A4); 
+		else  Right_rear_speed=ctimer_count_read(TIMER3_COUNT0_A4); 
 	 
+	if(gpio_get(B18))Left_front_speed=ctimer_count_read(TIMER4_COUNT0_A15); 
+		else  Left_front_speed=-ctimer_count_read(TIMER4_COUNT0_A15); 
+	 
+	if(gpio_get(B6))Right_front_speed=-ctimer_count_read(TIMER1_COUNT0_A16); 
+		else  Right_front_speed=ctimer_count_read(TIMER1_COUNT0_A16); 
 	
 	ctimer_count_clean(TIMER0_COUNT1_A2);
 	ctimer_count_clean(TIMER3_COUNT0_A4);
+	ctimer_count_clean(TIMER4_COUNT0_A15);
+	ctimer_count_clean(TIMER1_COUNT0_A16);
 
 }
 

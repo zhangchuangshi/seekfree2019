@@ -34,11 +34,11 @@ extern _pid_t pid_left_rear;
 extern _pid_t pid_right_rear;	
 
 
-int16 Left_front_goalspeed;
-int16 Right_front_goalspeed;
-int16 Left_rear_goalspeed;
-int16 Right_rear_goalspeed;
-int16 r,l,a,b;
+extern int16 Left_front_goalspeed;
+extern int16 Right_front_goalspeed;
+extern int16 Left_rear_goalspeed;
+extern int16 Right_rear_goalspeed;
+
 
 void GINT0_DriverIRQHandler(void)
 {
@@ -139,24 +139,18 @@ void MRT0_DriverIRQHandler(void)
 		static int i;
     if(MRT_FLAG_READ(MRT_CH0))
     {
-        MRT_FLAG_CLR(MRT_CH0);
-			flag2=1;
-
-			
-
-			
+      MRT_FLAG_CLR(MRT_CH0);
+			flag2=1;			
 			speed_get();
-			a=Left_front_speed;
-			b=Right_front_speed;
-			PID_Control(&pid_left_rear, Left_front_speed, 40);//Left_rear_goalspeed
-	    PID_Control(&pid_right_rear, Right_front_speed, 40);//Right_rear_goalspeed
-			r=pid_right_rear.result;
-			l=pid_left_rear.result;
+			PID_Control(&pid_left_rear, Left_rear_speed, Left_rear_goalspeed);//
+	    PID_Control(&pid_right_rear, Right_rear_speed, Right_rear_goalspeed);//
+			PID_Control(&pid_left_front, Left_front_speed, Left_front_goalspeed);//
+	    PID_Control(&pid_right_front, Right_front_speed, Right_front_goalspeed);//
 
-			control(r,l,0,0);
+			control((int16)pid_left_front.result,(int16)pid_right_front.result,(int16)pid_left_rear.result,(int16)pid_right_rear.result);
 
 			i++;
-			if(i%100==0)gpio_toggle(B2);
+			//if(i%100==0);
 
 				
     }

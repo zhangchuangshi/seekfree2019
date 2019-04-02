@@ -1195,12 +1195,12 @@ ARM Macro Assembler    Page 19
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\startup_lpc54606.d -o.\objects\startup_lpc54606.o -IC
-:\Users\Administrator\Desktop\·ÉË¼¿¨¶û\´úÂë\Projecct\MDK\RTE -IC:\Keil_v5\ARM\P
-ACK\Keil\LPC54000_DFP\2.6.0 -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\PAC
-K\Keil\LPC54000_DFP\2.6.0\Device\Include --predefine="__EVAL SETA 1" --predefin
-e="__UVISION_VERSION SETA 514" --predefine="LPC54606 SETA 1" --list=.\listings\
-startup_lpc54606.lst ..\..\Libraries\startup\DeviceSupport\MDK-ARM\startup_LPC5
-4606.s
+:\Users\Administrator\Desktop\·ÉË¼¿¨¶û\´úÂë\code\Projecct\MDK\RTE -IC:\Keil_v5\
+ARM\PACK\Keil\LPC54000_DFP\2.6.0 -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\AR
+M\PACK\Keil\LPC54000_DFP\2.6.0\Device\Include --predefine="__EVAL SETA 1" --pre
+define="__UVISION_VERSION SETA 514" --predefine="LPC54606 SETA 1" --list=.\list
+ings\startup_lpc54606.lst ..\..\Libraries\startup\DeviceSupport\MDK-ARM\startup
+_LPC54606.s
 
 
 
