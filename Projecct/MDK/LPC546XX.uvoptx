@@ -175,32 +175,32 @@
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>UARTN[uartn]-&gt;FIFORD</ItemText>
+          <ItemText>set_speed_s,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>X,0x0A</ItemText>
+          <ItemText>state_flag,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Y,0x0A</ItemText>
+          <ItemText>x_x,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Z,0x0A</ItemText>
+          <ItemText>vy</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>data</ItemText>
+          <ItemText>vz,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MRT_CH0</ItemText>
+          <ItemText>L</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
@@ -240,22 +240,22 @@
         <Ww>
           <count>17</count>
           <WinNumber>1</WinNumber>
-          <ItemText>mt9v032_finish_flag</ItemText>
+          <ItemText>mt9v032_finish_flag,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>1</WinNumber>
-          <ItemText>x_x,0x0A</ItemText>
+          <ItemText>set_speed_s,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>1</WinNumber>
-          <ItemText>y_y,0x0A</ItemText>
+          <ItemText>set_speed_s,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Left_front_speed,0x0A</ItemText>
+          <ItemText>set_speed_l,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
@@ -275,7 +275,7 @@
         <Ww>
           <count>24</count>
           <WinNumber>1</WinNumber>
-          <ItemText>r,0x0A</ItemText>
+          <ItemText>excursion_y</ItemText>
         </Ww>
         <Ww>
           <count>25</count>
@@ -601,7 +601,7 @@
 
   <Group>
     <GroupName>drives_c</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -830,7 +830,7 @@
 
   <Group>
     <GroupName>common</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1435,6 +1435,19 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\CODE\Pid\Pid.c</PathWithFileName>
       <FilenameWithoutPath>Pid.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>82</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\CODE\Car_Control\Car_Control.c</PathWithFileName>
+      <FilenameWithoutPath>Car_Control.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

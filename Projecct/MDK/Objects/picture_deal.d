@@ -51,3 +51,5 @@
 .\objects\picture_deal.o: ..\CODE\Function\Function.h
 .\objects\picture_deal.o: ..\CODE\Encoder\Encoder.h
 .\objects\picture_deal.o: ..\CODE\Pid\Pid.h
+.\objects\picture_deal.o: ..\CODE\Car_Control\Car_Control.h
+.\objects\picture_deal.o: ..\CODE\Picture_deal\Picture_deal.h

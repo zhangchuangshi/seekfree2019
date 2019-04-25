@@ -20,22 +20,19 @@
 #include "headfile.h"
 
 
-int16 Left_front_goalspeed;
-int16 Right_front_goalspeed;
-int16 Left_rear_goalspeed;
-int16 Right_rear_goalspeed;
+
 
 //----------------------------------------------------
 //----------------------------------------------------
 volatile int threshold=0;
-uint8 min_gray=120;	
+uint8 min_gray=75;	
 int flag2=0;
 int flag1=0;
 int num;
+extern int16 beacon_x;
+extern int16 beacon_y;
+int16 x_x;
 
-#define a_PARAMETER          (0.09f)               
-#define b_PARAMETER          (0.09f) 
-void McNamm_wheel_control(float Vx,float Vy,float Vz);
 
 void pwm_init();
 
@@ -44,28 +41,31 @@ int main(void)
 {   
     get_clk();
     gpio_init(B2,GPO,1,PULLUP);
-		uart_init(USART_0,115200,UART0_TX_A25,UART0_RX_A24); 
+		//uart_init(USART_0,115200,UART0_TX_A25,UART0_RX_A24); 
 	  pwm_init();
 	  lcd_init();  
 		gpio_set(B2,0);
-    mrt_pit_init_ms(MRT_CH0,5);
+    //mrt_pit_init_ms(MRT_CH0,5);
+		pit_init_ms(5); 
+	
 	  Encoder_Init();
 	  camera_init(); 		
 	  EnableInterrupts;
-	  uart_putchar(USART_0,0xA5);  
-	  McNamm_wheel_control(0,0,0);
+	  //uart_putchar(USART_0,0xA5);  
+	  //McNamm_wheel_control(0,20,0);
     while(1)
     {
 
 			
 		if(mt9v032_finish_flag)
 		{
+			//pit_start();
 			//mrt_start(MRT_CH0);
-			threshold=MyOSTU(120,60,*image);
+			threshold=MyOSTU(128,60,*image);
 				
 				if(threshold<min_gray)threshold=min_gray;
 			
-			lcd_displayimageOUST(image[0],MT9V032_W,MT9V032_H,threshold);
+			//lcd_displayimageOUST(image[0],MT9V032_W,MT9V032_H,threshold);
 				//lcd_displayimage032(image[0],MT9V032_W,MT9V032_H);
 			
 			/*if(flag1==0)lcd_displayimage032(image[0],MT9V032_W,MT9V032_H);
@@ -73,6 +73,8 @@ int main(void)
 				lcd_displayimageOUST(image[0],MT9V032_W,MT9V032_H,threshold);
 			}//*/
 			Scan_Point();
+			Car_Control();
+			//Judge_distance(beacon_x,beacon_y);
 			mt9v032_finish_flag = 0;		
 			gpio_toggle(B2);
 		}//
@@ -97,20 +99,7 @@ void pwm_init()
 		sct_pwm_init(SCT0_OUT8_A29,50,0);
 	  sct_pwm_init(SCT0_OUT9_A30,50,0);
 }
-/*
-功能:轮胎控制
-入口参数: X x轴的速度(平移)  Y y轴的速度(直线速度) Z 左转右转
-返回值:无
-解释:
-*/
-void McNamm_wheel_control(float Vx,float Vy,float Vz)
-{
-	  Left_rear_goalspeed    = -Vx+Vy-Vz*(a_PARAMETER+b_PARAMETER);
-    Left_front_goalspeed   = +Vx+Vy-Vz*(a_PARAMETER+b_PARAMETER);
-	  Right_front_goalspeed  = -Vx+Vy+Vz*(a_PARAMETER+b_PARAMETER);
-		Right_rear_goalspeed   = +Vx+Vy+Vz*(a_PARAMETER+b_PARAMETER);
-    //control(Left_front_goalspeed,Right_front_goalspeed,Left_rear_goalspeed,Right_rear_goalspeed);//
-}
+
 /*
 功能:PWM占空比赋值
 入口参数:无

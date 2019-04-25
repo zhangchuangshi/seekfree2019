@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER\inc;..\USER\src;..\..\Libraries\startup\CoreSupport;..\..\Libraries\startup\DeviceSupport\MDK-ARM;..\..\Libraries\startup\DeviceSupport;..\..\Libraries\drives\inc;..\..\Libraries\drives\src;..\..\Libraries\seekfree;..\..\Libraries\drives\common;..\CODE;..\CODE\OTSU;..\CODE\Picture_deal;..\CODE\Function;..\CODE\Encoder;..\CODE\Pid</IncludePath>
+              <IncludePath>..\USER\inc;..\USER\src;..\..\Libraries\startup\CoreSupport;..\..\Libraries\startup\DeviceSupport\MDK-ARM;..\..\Libraries\startup\DeviceSupport;..\..\Libraries\drives\inc;..\..\Libraries\drives\src;..\..\Libraries\seekfree;..\..\Libraries\drives\common;..\CODE;..\CODE\OTSU;..\CODE\Picture_deal;..\CODE\Function;..\CODE\Encoder;..\CODE\Pid;..\CODE\Car_Control</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -847,6 +847,11 @@
               <FileName>Pid.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\CODE\Pid\Pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>Car_Control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\Car_Control\Car_Control.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -72,6 +72,7 @@ typedef struct
 #include "Function.h"
 #include "Encoder.h"
 #include "Pid.h"
+#include "Car_Control.h"
 typedef unsigned char       u8;   //  8 bits 
 typedef unsigned short int  u16;  // 16 bits 
 typedef unsigned long int   u32;  // 32 bits 

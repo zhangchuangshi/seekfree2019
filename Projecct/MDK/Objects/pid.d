@@ -51,3 +51,5 @@
 .\objects\pid.o: ..\CODE\Function\Function.h
 .\objects\pid.o: ..\CODE\Encoder\Encoder.h
 .\objects\pid.o: ..\CODE\Pid\Pid.h
+.\objects\pid.o: ..\CODE\Car_Control\Car_Control.h
+.\objects\pid.o: ..\CODE\Picture_deal\Picture_deal.h

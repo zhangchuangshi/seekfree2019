@@ -50,4 +50,6 @@
 .\objects\isr.o: ..\CODE\Function\Function.h
 .\objects\isr.o: ..\CODE\Encoder\Encoder.h
 .\objects\isr.o: ..\CODE\Pid\Pid.h
+.\objects\isr.o: ..\CODE\Car_Control\Car_Control.h
+.\objects\isr.o: ..\CODE\Picture_deal\Picture_deal.h
 .\objects\isr.o: ..\USER\inc\isr.h

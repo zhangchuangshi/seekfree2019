@@ -22,19 +22,25 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 C:\Users\Administrator\Desktop\·ÉË¼¿¨¶û\´úÂë\code\Projecct\MDK\LPC546XX.uvprojx
-Project File Date:  03/25/2019
+Project File Date:  04/09/2019
 
 <h2>Output:</h2>
 Build target 'SeekFree_LPC546XX'
-compiling isr.c...
-..\CODE\Picture_deal\Picture_deal.h(3): warning:  #1295-D: Deprecated declaration Scan_Point - give arg types
+compiling main.c...
+..\CODE\Picture_deal\Picture_deal.h(10): warning:  #1295-D: Deprecated declaration Scan_Point - give arg types
   void Scan_Point();
-..\..\Libraries\drives\inc\headfile.h(80): warning:  #1295-D: Deprecated declaration control - give arg types
+..\CODE\Picture_deal\Picture_deal.h(10): warning:  #1295-D: Deprecated declaration Scan_Point - give arg types
+  void Scan_Point();
+..\..\Libraries\drives\inc\headfile.h(81): warning:  #1295-D: Deprecated declaration control - give arg types
   void control();
-..\USER\src\isr.c: 2 warnings, 0 errors
+..\USER\src\main.c(37): warning:  #1295-D: Deprecated declaration pwm_init - give arg types
+  void pwm_init();
+..\USER\src\main.c(74): warning:  #9-D: nested comment is not allowed
+                        }//*/
+..\USER\src\main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=13616 RO-data=364 RW-data=308 ZI-data=37348  
-".\Objects\LPC546XX.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=16416 RO-data=364 RW-data=332 ZI-data=22476  
+".\Objects\LPC546XX.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Users\Administrator\Desktop\·ÉË¼¿¨¶û\´úÂë\code\Projecct\MDK\RTE

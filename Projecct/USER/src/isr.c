@@ -39,6 +39,7 @@ extern int16 Right_front_goalspeed;
 extern int16 Left_rear_goalspeed;
 extern int16 Right_rear_goalspeed;
 
+extern int16 twinkle_delay;/*ÉÁË¸ÑÓÊ±²ÎÊý*/
 
 void GINT0_DriverIRQHandler(void)
 {
@@ -80,7 +81,14 @@ void FLEXCOMM0_DriverIRQHandler(void)
 void RIT_DriverIRQHandler(void)
 {
     PIT_FLAG_CLEAR;
+		speed_get();
+		if(twinkle_delay>0)twinkle_delay--;	
+		PID_Control(&pid_left_rear, Left_rear_speed, Left_rear_goalspeed);//
+	  PID_Control(&pid_right_rear, Right_rear_speed, Right_rear_goalspeed);//
+	  PID_Control(&pid_left_front, Left_front_speed, Left_front_goalspeed);//
+	  PID_Control(&pid_right_front, Right_front_speed, Right_front_goalspeed);//
 
+		control((int16)pid_left_front.result,(int16)pid_right_front.result,(int16)pid_left_rear.result,(int16)pid_right_rear.result);
     
 }
 
@@ -140,8 +148,9 @@ void MRT0_DriverIRQHandler(void)
     if(MRT_FLAG_READ(MRT_CH0))
     {
       MRT_FLAG_CLR(MRT_CH0);
-			flag2=1;			
+			flag2=1;		
 			speed_get();
+			if(twinkle_delay>0)twinkle_delay--;	
 			PID_Control(&pid_left_rear, Left_rear_speed, Left_rear_goalspeed);//
 	    PID_Control(&pid_right_rear, Right_rear_speed, Right_rear_goalspeed);//
 			PID_Control(&pid_left_front, Left_front_speed, Left_front_goalspeed);//
